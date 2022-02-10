@@ -18,6 +18,8 @@ Since we've got to serve a lot of queries with minimum latency, we need to come 
 
 One of the most appropriate data structures that can serve our purpose is the **Trie** 
 
+![Trie](images/trie.png?raw=true "trie data structure")
+
 ### Complexity
 
 * **Space** : O(n)
