@@ -1,6 +1,7 @@
-namespace App.Model;
+namespace App.Service;
 
 using System.Text;
+using App.Model;
 
 public class Trie : ITrie
 {

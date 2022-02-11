@@ -1,6 +1,7 @@
 namespace App.Controller;
 
 using App.Model;
+using App.Service;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
