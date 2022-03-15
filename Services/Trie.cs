@@ -3,19 +3,26 @@ namespace App.Service;
 using System.Text;
 using App.Model;
 
+/// <summary>
+/// Trie Datastructure
+/// </summary>
 public class Trie : ITrie
 {
-
     private readonly ILogger<Trie> _logger;
 
-    private Node root { set; get; }
+    private readonly Node _root;
 
     public Trie(ILogger<Trie> logger)
     {
-        this._logger = logger;
-        this.root = new Node();
+        _logger = logger;
+        _root = new Node();
     }
 
+    /// <summary>
+    /// Add a string to the trie data structure
+    /// </summary>
+    /// <param name="str">a string</param>
+    /// <returns></returns>
     public void Add(string str)
     {
         if (str.Length == 0)
@@ -25,9 +32,15 @@ public class Trie : ITrie
 
         _logger.LogInformation("Add new value {}", str);
 
-        AddRec(root, str, 0);
+        AddRec(_root, str, 0);
     }
 
+    /// <summary>
+    /// Look for a specific string
+    /// </summary>
+    /// <param name="str"></param>
+    /// <param name="limit"></param>
+    /// <returns></returns>
     public Response Find(string str, int limit)
     {
         Response response = new Response(limit);
@@ -37,13 +50,18 @@ public class Trie : ITrie
             return response;
         }
 
-        FindRec(root, response, str, 0);
+        FindRec(_root, response, str, 0);
 
         _logger.LogInformation(this.ToString());
 
         return response;
     }
 
+    /// <summary>
+    /// Serialize a Trie data structure
+    /// </summary>
+    /// <param name="root">Root node of the Trie datastructure</param>
+    /// <returns></returns>
     public static string Serialize(Node root)
     {
         StringBuilder builder = new StringBuilder();
@@ -81,6 +99,11 @@ public class Trie : ITrie
         return builder.ToString();
     }
 
+    /// <summary>
+    /// Deserialize a given Trie data structure
+    /// </summary>
+    /// <param name="str">the string representation of a Trie data structure</param>
+    /// <returns></returns>
     public static Node Deserialize(string str)
     {
         if (str == "")
@@ -115,7 +138,7 @@ public class Trie : ITrie
                 }
             }
         }
-
+        
         return root;
     }
 
@@ -139,7 +162,7 @@ public class Trie : ITrie
         }
 
     }
-
+    
     private void ComputeSuggestions(Node root, Response response, string str)
     {
         if (root.EndWord)

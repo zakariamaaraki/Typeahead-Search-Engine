@@ -8,24 +8,22 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class TypeAheadController : ControllerBase
 {
-
-    private readonly ITrie trie;
+    private readonly ITrie _trie;
 
     public TypeAheadController(ITrie trie)
     {
-        this.trie = trie;
+        _trie = trie;
     }
 
     [HttpPost]
     public void Post(string str)
     {
-        this.trie.Add(str);
+        _trie.Add(str);
     }
 
     [HttpGet]
     public ResponseDto Get(string _search, int limit = 10)
     {
-        return new ResponseDto(this.trie.Find(_search, limit));
+        return new ResponseDto(_trie.Find(_search, limit));
     }
-
 }

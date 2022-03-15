@@ -1,13 +1,15 @@
 namespace App.Model;
 
+/// <summary>
+/// Node will be used in Trie data structure
+/// </summary>
 public class Node
 {
-    private static readonly int CAPACITY = 128;
+    private static readonly int s_capacity = 128;
 
-    public Node[] Children { set; get; } = new Node[CAPACITY];
+    public Node[] Children { set; get; } = new Node[s_capacity];
 
     public Boolean EndWord { set; get; } = false;
 
     public long Frequency { set; get; } = 0;
-
 }

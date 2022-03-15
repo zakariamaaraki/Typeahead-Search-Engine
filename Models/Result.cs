@@ -1,15 +1,17 @@
 namespace App.Model;
 
+/// <summary>
+/// Result
+/// </summary>
 public class Result
 {
-    public string str { get; set; }
+    public string Str { get; }
 
-    public Node node { get; set; }
+    public Node Node { get; }
 
     public Result(string str, Node node)
     {
-        this.str = str;
-        this.node = node;
+        Str = str;
+        Node = node;
     }
-
 }

@@ -2,26 +2,28 @@ namespace App.Model;
 
 public class ResponseDto
 {
+    public long Hits { get; set; }
 
-    public long hits { get; set; }
+    public LinkedList<string> Suggestions { get; } = new LinkedList<string>();
 
-    public LinkedList<string> suggestions { get; set; } = new LinkedList<string>();
-
+    /// <summary>
+    /// Convert a Response object to ResponseDto
+    /// </summary>
+    /// <param name="response">object to be transformed</param>
     public ResponseDto(Response response)
     {
-        hits = response.hits;
+        Hits = response.Hits;
 
-        PriorityQueue<Result, long> PriorityQueue = response.PriorityQueue;
+        PriorityQueue<Result, long> priorityQueue = response.PriorityQueue;
 
-        while (PriorityQueue.Count > 0)
+        while (priorityQueue.Count > 0)
         {
-            Result result = PriorityQueue.Dequeue();
+            Result result = priorityQueue.Dequeue();
 
             // update frequency
-            result.node.Frequency++;
+            result.Node.Frequency++;
 
-            suggestions.AddFirst(result.str);
+            Suggestions.AddFirst(result.Str);
         }
     }
-
 }
