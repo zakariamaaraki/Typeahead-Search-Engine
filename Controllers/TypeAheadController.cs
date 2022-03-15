@@ -1,8 +1,8 @@
-namespace App.Controller;
-
 using App.Model;
 using App.Service;
 using Microsoft.AspNetCore.Mvc;
+
+namespace App.Controller;
 
 [ApiController]
 [Route("api/[controller]")]

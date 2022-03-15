@@ -1,9 +1,7 @@
 namespace App.Model;
 
-using System.Collections.Generic;
-
 /// <summary>
-/// Response is a Heap that keep the K most relevant elements
+///     Response is a Heap that keep the K most relevant elements
 /// </summary>
 public class Response
 {
@@ -11,16 +9,16 @@ public class Response
     {
         Capacity = capacity;
     }
-    
+
     public int Capacity { get; }
 
     public long Hits { get; set; }
 
-    public PriorityQueue<Result, long> PriorityQueue { get; } = new PriorityQueue<Result, long>();
+    public PriorityQueue<Result, long> PriorityQueue { get; } = new();
 
     /// <summary>
-    /// Add a suggestion to the heap.
-    /// If the size of the heap exceed the capacity, the suggestion with least frequency will be removed
+    ///     Add a suggestion to the heap.
+    ///     If the size of the heap exceed the capacity, the suggestion with least frequency will be removed
     /// </summary>
     /// <param name="node">Node in the Trie</param>
     /// <param name="suggestion">A relevant suggestion</param>
@@ -32,9 +30,6 @@ public class Response
 
         Hits++;
 
-        if (PriorityQueue.Count > Capacity)
-        {
-            PriorityQueue.Dequeue();
-        }
+        if (PriorityQueue.Count > Capacity) PriorityQueue.Dequeue();
     }
 }

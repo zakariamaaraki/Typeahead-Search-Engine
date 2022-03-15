@@ -1,7 +1,7 @@
 namespace App.Model;
 
 /// <summary>
-/// Node will be used in Trie data structure
+///     Node will be used in Trie data structure
 /// </summary>
 public class Node
 {
@@ -9,7 +9,7 @@ public class Node
 
     public Node[] Children { set; get; } = new Node[s_capacity];
 
-    public Boolean EndWord { set; get; } = false;
+    public bool EndWord { set; get; } = false;
 
     public long Frequency { set; get; } = 0;
 }

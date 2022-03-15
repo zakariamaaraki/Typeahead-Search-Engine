@@ -1,9 +1,9 @@
-namespace App.Service;
-
 using App.Model;
 
+namespace App.Service;
+
 /// <summary>
-/// ITrie interface
+///     ITrie interface
 /// </summary>
 public interface ITrie
 {

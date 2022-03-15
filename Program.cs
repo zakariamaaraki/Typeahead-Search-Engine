@@ -13,7 +13,7 @@ builder.Services.AddSingleton<ITrie, Trie>();
 
 var app = builder.Build();
 
-IWebHostEnvironment env = builder.Environment;
+var env = builder.Environment;
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
